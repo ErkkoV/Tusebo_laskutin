@@ -76,10 +76,10 @@ def generate_pdf(
     c.setFont("Helvetica-Bold", 14)
     c.drawString(40, height - 50, "Turun Seudun Bofferoijat ry")
     c.setFont("Helvetica", 10)
-    c.drawString(40, height - 65, f"Y-tunnus: {YNUMBER}")
+    c.drawString(40, height - 65, f"{YNUMBER}")
     c.drawString(40, height - 80, f"{ADDRESS}")
-    c.drawString(40, height - 95, f"Puhelin: {PHONE}")
-    c.drawString(40, height - 110, f"Sähköposti: {EMAIL}")
+    c.drawString(40, height - 95, f"{PHONE}")
+    c.drawString(40, height - 110, f"{EMAIL}")
 
     # Invoice meta
     c.setFont("Helvetica-Bold", 12)
