@@ -75,7 +75,7 @@ These values are needed to generate the bills and will be read by the program to
 
 ## 3. Setting Up `emails.csv`
 
-Create the `emails.csv` file in the root of the project directory. The file should contain customer names, email addresses, and customer numbers (in the format: `name;email;customer_number`). Here's an example:
+Create the `emails.csv` file in the root of the project directory. The file should contain customer names, email addresses, and customer numbers (in the format: `name;email`). Here's an example:
 
 ```csv
 petteri esimerkki;petteri.esimerkki@esimerkki.fi
@@ -137,6 +137,6 @@ Or use whole path, example:
 python C:/Projects/Tusebo_laskutin/generate.py
 ```
 
-This will read the `emails.csv` and `laskut.csv` files, generate reference numbers, create PDFs for each customer, and save them in the `laskut` folder. The bill filenames will include the customer name, date, and the reference number.
+This will read the `emails.csv` and `laskut.csv` files, generate reference numbers, create PDFs for each customer, and save them in the `laskut` folder. The bill filenames will include bill type, customer name and date.
 
 ---
