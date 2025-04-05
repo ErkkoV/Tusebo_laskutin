@@ -21,16 +21,16 @@ This will create a new directory called `venv` that contains the isolated enviro
 
 ### Step 2: Activate the Virtual Environment
 
-- On **Windows (Powershell)**, activate the virtual environment using:
+- Activate the virtual environment using:
 
 ```bash
-.env\Scripts\Activate
+.env\Scripts\Activate
 ```
 
-- On **macOS/Linux**, use:
+If you get error message, try:
 
 ```bash
-source venv/bin/activate
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
 You should now see `(venv)` before the prompt, indicating that the virtual environment is active.
@@ -74,13 +74,12 @@ These values are needed to generate the bills and will be read by the program to
 Create the `emails.csv` file in the root of the project directory. The file should contain customer names, email addresses, and customer numbers (in the format: `name;email;customer_number`). Here's an example:
 
 ```csv
-petteri esimerkki;petteri.esimerkki@esimerkki.fi;101
-juuso jokunen;juuso@esimerkki.fi;102
+petteri esimerkki;petteri.esimerkki@esimerkki.fi
+juuso jokunen;juuso@esimerkki.fi
 ```
 
 - **Name**: Full name of the customer.
 - **Email**: Email address of the customer.
-- **Customer Number**: A unique identifier for the customer (used for generating reference numbers).
 
 ---
 
@@ -104,19 +103,19 @@ kausimaksu;60;30
 
 ### Step 1: Reference Number Generation
 
-The reference numbers are generated based on the customer number. The reference generation ensures that no reference number is reused, even across multiple runs.
+The reference numbers are generated based on finnish bank reference standard.
 
 ### Step 2: Tracking Latest Reference Number
 
-The program will store the **last generated reference number** in the `references.txt` file. Each time a bill is generated, it will update the `references.txt` file with the latest reference number. This way, the program ensures that references are sequential and unique.
+The program will store the **last generated reference number** in the `references.txt` file. Each time a bill is generated, it will update the `references.txt` file with the latest reference number.
 
 Example of `references.txt`:
 
 ```text
-102
+101
 ```
 
-Each time a new bill is generated, the program will read this file, increment the reference number, and store the new number back in the file.
+In order to ensure unique reference numbers each time a new bill is generated, the program will read this file, increment the reference number, and store the new number back in the file.
 
 ---
 
@@ -126,6 +125,12 @@ Once everything is set up, you can run the program to generate the bills:
 
 ```bash
 python generate_bills.py
+```
+
+Or use whole path, example:
+
+```bash
+python C:/Projects/Tusebo_laskutin/generate.py
 ```
 
 This will read the `emails.csv` and `laskut.csv` files, generate reference numbers, create PDFs for each customer, and save them in the `laskut` folder. The bill filenames will include the customer name, date, and the reference number.
