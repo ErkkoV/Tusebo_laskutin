@@ -55,7 +55,15 @@ def save_generated_reference(reference_number, file_path="generated_references.t
 
 
 def generate_pdf(
-    name, email, ref_number, bill_type, amount, due_days, output_dir, generation_date
+    name,
+    email,
+    ref_number,
+    bill_type,
+    amount,
+    due_days,
+    output_dir,
+    generation_date,
+    bill_number,
 ):
     safe_name = name.replace(" ", "_").lower()
     filename = os.path.join(
@@ -64,26 +72,20 @@ def generate_pdf(
     c = canvas.Canvas(filename, pagesize=A4)
     width, height = A4
 
-    # Load env details
-    org_email = os.getenv("EMAIL")
-    phone = os.getenv("PHONE")
-    address = os.getenv("ADDRESS")
-    y_number = os.getenv("YNUMBER")
-
     # Draw header
     c.setFont("Helvetica-Bold", 14)
     c.drawString(40, height - 50, "Turun Seudun Bofferoijat ry")
     c.setFont("Helvetica", 10)
-    c.drawString(40, height - 65, f"Y-tunnus: {y_number}")
-    c.drawString(40, height - 80, f"{address}")
-    c.drawString(40, height - 95, f"Puhelin: {phone}")
-    c.drawString(40, height - 110, f"Sähköposti: {org_email}")
+    c.drawString(40, height - 65, f"Y-tunnus: {YNUMBER}")
+    c.drawString(40, height - 80, f"{ADDRESS}")
+    c.drawString(40, height - 95, f"Puhelin: {PHONE}")
+    c.drawString(40, height - 110, f"Sähköposti: {EMAIL}")
 
     # Invoice meta
     c.setFont("Helvetica-Bold", 12)
     c.drawString(400, height - 50, "LASKU")
     c.setFont("Helvetica", 10)
-    c.drawString(400, height - 65, f"Laskunumero: {ref_number}")
+    c.drawString(400, height - 65, f"Laskunumero: {bill_number}")
     c.drawString(400, height - 80, f"Päiväys: {generation_date}")
 
     # Customer info
@@ -201,6 +203,7 @@ def main():
                 due_days.strip(),
                 output_dir,
                 generation_date,
+                last_generated_ref,
             )
 
 
