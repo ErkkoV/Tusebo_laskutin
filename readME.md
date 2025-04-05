@@ -128,7 +128,7 @@ In order to ensure unique reference numbers each time a new bill is generated, t
 Once everything is set up, you can run the program to generate the bills:
 
 ```bash
-python generate_bills.py
+python generate.py
 ```
 
 Or use whole path, example:
