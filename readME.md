@@ -63,6 +63,10 @@ Edit the `.env` file with the correct values for your project:
 IBAN=FI00 1234 5600 0007 89
 BIC=NDEAFIHH
 BANK_NAME=Fictional Bank Oy
+EMAIL=esimerkki@esimerkki.com
+PHONE=07099999999
+ADDRESS=Esimerkkikuja 13, 70015 KUJALA
+YNUMBER=01-9977111
 ```
 
 These values are needed to generate the bills and will be read by the program to populate the bank information on each bill.
