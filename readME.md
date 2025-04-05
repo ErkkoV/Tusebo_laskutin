@@ -140,3 +140,19 @@ python C:/Projects/Tusebo_laskutin/generate.py
 This will read the `emails.csv` and `laskut.csv` files, generate reference numbers, create PDFs for each customer, and save them in the `laskut` folder. The bill filenames will include bill type, customer name and date.
 
 ---
+
+## 7. Make standalone version exe
+
+Install nuitka:
+
+```bash
+python -m pip install nuitka
+```
+
+Run nuitka stand-alone generation:
+
+```bash
+python -m nuitka --standalone generate.py
+```
+
+generate.dist folder will have stand-alone version, that runs as python version, but from generate.exe file.
